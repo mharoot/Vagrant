@@ -1,0 +1,1 @@
+{"virtualbox":{"/etc/nginx/sites-available":{"guestpath":"/etc/nginx/sites-available","hostpath":"/Users/michael/Documents/Github/etc/nginx/sites-available","disabled":false,"__vagrantfile":true},"/vagrant":{"guestpath":"/vagrant","hostpath":"/Users/michael/Documents/Github/Vagrant/brownell-xenial64lemp","disabled":false,"__vagrantfile":true}}}
