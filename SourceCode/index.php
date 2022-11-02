@@ -1,5 +1,6 @@
 <?php
 declare(strict_types=1);
+// Currently, Redis Cluster does not support NATted environments and in general environments where IP addresses or TCP ports are remapped.
 // ini_set('session.save_handler', 'redis');
 // ini_set('session.save_path', 'tcp://redisfrontend:6379, tcp://redisfrontend:6379');
 // session_name('ElegantMVC');

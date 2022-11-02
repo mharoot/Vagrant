@@ -22,6 +22,15 @@ add-apt-repository universe -y
 # core files. Do this by typing the following:
 apt install php-fpm php-mysql -y
 
+# Redis
+apt install php-dev -y
+pecl install redis
+
+apt install redis-server -y
+sed -i 's/^supervised no/supervised systemd/' /etc/redis/redis.conf
+systemctl restart redis.service
+systemctl status redis
+
 
 service nginx start
 

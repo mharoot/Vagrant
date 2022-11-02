@@ -18,3 +18,14 @@ Be aware that sometimes hackers release boxes with intent to attack or snoop on 
 
 
 
+# Redis - Redis Cluster does not support NATted environments. [(Learn more here!)](https://redis.io/docs/management/scaling/)
+
+Currently, Redis Cluster does not support NATted environments and in general environments where IP addresses or TCP ports are remapped.
+Sorry guys, but to do this we need actual phyiscal or cloud computers.
+```php
+// ini_set('session.save_handler', 'redis');
+// ini_set('session.save_path', 'tcp://127.0.0.1:6379, tcp://127.0.0.1:6379');
+// session_name('ElegantMVC');
+```
+
+To experience the full power of redis clusters w/o using multiple physical/cloud computers - use container technology like Docker, and only deploy one redis container needed to handle all your services.  The application in its current state is monolithic.  You can spin up multiple instances on different physical/cloud nodes, managed by one master node.
