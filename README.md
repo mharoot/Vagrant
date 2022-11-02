@@ -11,9 +11,6 @@ The people that provided [bionic64](https://app.vagrantup.com/hashicorp/boxes/bi
 ---
 ---
 
----
----
-
 # Set Up - NGINX on Host Computer
 In order to have our requests forward to the virtual box that is using NGINX our host needs to have nginx also, and it needs to run on a different port other than 8080.  We do this for simplicity since the default is 8080 on our virtual machine.  So once you install nginx, it starts automatically, stop the process, or kill the processs running on port 8080.  Set up the config in your host computer to use a different port like 3000.  Restart nginx, and you should be able to visit this instance of NGINX on your host computer like this `https://localhost:3000`.  The port forwarding has been set up for you to route from 8080 host to our 8000 virtual machine.
 
