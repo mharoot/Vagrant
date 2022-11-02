@@ -4,7 +4,7 @@
 #### Vagrant Box - hashicorp/bionic64
 The people that provided [bionic64](https://app.vagrantup.com/hashicorp/boxes/bionic64) are the creators of Vagrant.  Pull this box if you want to set up your own LAMP/LEMP stack on it on `Ubuntu 18.04.7 LTS`.
 
-Note: 
+##### Note: 
 ##### Be aware that sometimes hackers release boxes with intent to attack or snoop on users.  Use these sorts of boxes with caution, cause they could provision any malware they want into your virtual box.  It is best to pull the hashicorp/bionic43 and provision the machine with your own scripts or SSH into them.
 
 ---
