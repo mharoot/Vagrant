@@ -29,3 +29,6 @@ Sorry guys, but to do this we need actual phyiscal or cloud computers.
 ```
 
 To experience the full power of redis clusters w/o using multiple physical/cloud computers - use container technology like Docker, and only deploy one redis container needed to handle all your services.  The application in its current state is monolithic.  You can spin up multiple instances on different physical/cloud nodes, managed by one master node.
+
+# enp0s3 is the network interface name on Ubuntu
+![enp0s3 is the network interface name on Ubuntu](https://raw.githubusercontent.com/mharoot/Vagrant/master/hashicorp-bionic64/Nat%20Illustration%20with%20Host%20and%203%20Virtual%20machines.png)
