@@ -25,6 +25,8 @@ apt install php-fpm php-mysql -y
 # Redis
 apt install php-dev -y
 pecl install redis
+# need this to use php sessions with redis
+sudo apt-get install php-redis
 
 apt install redis-server -y
 sed -i 's/^supervised no/supervised systemd/' /etc/redis/redis.conf

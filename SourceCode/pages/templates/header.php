@@ -64,7 +64,7 @@
       <li class="nav-item">
         <form action="./select" method="GET" id="searchForm" class="form-inline">
          
-        <div class="form-group mydropdown-content" style="right: 32%">
+        <div class="form-group mydropdown-content" style="right: 32%; margin-top:36px;">
           <input type="text" class="form-control " placeholder="Search.." id="myInput" onkeyup="searchProducts(this.value)" autocomplete="off" placeholder="Search...">
 
           </input>
@@ -118,5 +118,5 @@
 </nav>
 </header>
 
-    <div class="container" style="padding: 5%; padding-top: 10%">
+    <div class="container">
     <div class="row" id="products">

@@ -25,8 +25,7 @@ There is a `provision.sh` file inside `/hasicorp-bionic64/` that does this for u
 
 # Redis - Redis Cluster does not support NAT environments. [(Learn more here!)](https://redis.io/docs/management/scaling/)
 
-Currently, Redis Cluster does not support NATted environments and in general environments where IP addresses or TCP ports are remapped.
-Sorry guys, but to do this we need actual phyiscal or cloud computers.
+I'm not sure if this is correct, maybe it is for the cluster settings but I was able to achieve this installing redis, redis-php , and used port forwarding host:6379 > virtual_machine:16379
 ```php
 // ini_set('session.save_handler', 'redis');
 // ini_set('session.save_path', 'tcp://127.0.0.1:6379, tcp://127.0.0.1:6379');
