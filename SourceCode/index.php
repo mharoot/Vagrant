@@ -4,7 +4,7 @@ declare(strict_types=1);
 ini_set('session.save_handler', 'redis');
 ini_set('session.save_path', 'tcp://localhost:16379');
 
-session_name('ElegantMVC');
+session_name('PHPREDIS_SESSION');
 session_start();
 
 
