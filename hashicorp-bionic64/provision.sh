@@ -24,9 +24,9 @@ apt install php-fpm php-mysql -y
 
 # Redis
 apt install php-dev -y
-pecl install redis
+pecl install redis -y
 # need this to use php sessions with redis
-sudo apt-get install php-redis
+sudo apt-get install php-redis -y
 
 apt install redis-server -y
 sed -i 's/^supervised no/supervised systemd/' /etc/redis/redis.conf
@@ -38,7 +38,7 @@ service nginx start
 
 
 
-# Note: You still need to Vagrant SSH to set tshis up manually and create the user with root privlleges since mysql requires sudo for root access
+# Note: You still need to Vagrant SSH to set this up manually and create the user with root privlleges since mysql requires sudo for root access
 # https://phoenixnap.com/kb/how-to-create-new-mysql-user-account-grant-privileges
 # sudo mysql_secure_installation
 
