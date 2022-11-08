@@ -2,7 +2,9 @@
 declare(strict_types=1);
 
 ini_set('session.save_handler', 'redis');
-ini_set('session.save_path', 'tcp://localhost:16379');
+
+// lets have it point the the host computer
+ini_set('session.save_path', 'tcp://192.168.0.215:6379');
 
 session_name('PHPREDIS_SESSION');
 session_start();
