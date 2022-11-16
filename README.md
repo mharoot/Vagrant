@@ -24,12 +24,12 @@ There is a `provision.sh` file inside `/hasicorp-bionic64/` that does this for u
 ---
 
 # Redis - Redis Cluster does not support NAT environments. [(Learn more here!)](https://redis.io/docs/management/scaling/)
-
 I'm not sure if this is correct, maybe it is for the cluster settings but I was able to achieve this installing redis, redis-php , and used port forwarding host:6379 > virtual_machine:16379
 ```php
-// ini_set('session.save_handler', 'redis');
-// ini_set('session.save_path', 'tcp://127.0.0.1:6379, tcp://127.0.0.1:6379');
-// session_name('ElegantMVC');
+ini_set('session.save_handler', 'redis');
+
+// lets have it point the the host computer
+ini_set('session.save_path', 'tcp://192.168.0.215:6379');
 ```
 
 To experience the full power of redis clusters w/o using multiple physical/cloud computers - use container technology like Docker, and only deploy one redis container needed to handle all your services.  The application in its current state is monolithic.  You can spin up multiple instances on different physical/cloud nodes, managed by one master node.
@@ -43,3 +43,5 @@ There are articles out there talking about using private network ip but I have h
 ![enp0s3 is the network interface name on Ubuntu](https://raw.githubusercontent.com/mharoot/Vagrant/master/hashicorp-bionic64/Nat%20Illustration%20with%20Host%20and%203%20Virtual%20machines.png)
 
 
+# MySQL Port Forwarding from Virtual Box to Host Computer
+We installed mysql on both the box and my host computer.  The host computer contains the database.
