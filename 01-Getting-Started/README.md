@@ -1,0 +1,2 @@
+# 01-Getting-started
+ubuntu-8084 - powers up an entire e-commerce website using Vagrant Provision execute a shell script that installs everything we need for the LEMP stack website to work out the box on port 8084.  It forwards ports for nginx, redis, and mysql from virtual boxes to the the host computer, to give it a single source of consistent data.  So make sure to have the entire MEMP/LEMP stack and redis installed on your host computer.
