@@ -32,6 +32,18 @@ terminal3: kubectl run --rm -it --image=alpine alpine2 -- sh
 192.168.41.130
 / # ping 192.168.77.130
 
+### Understanding Namespace in Kubernetes
+Login to kworker1 - ssh root@172.16.16.101
+password: kubeadmin
+
+Now we don't have docker installed but we can user ctr, take a look at `ctr -h` it has commands similar to docker.
+
+We know there are a bunch containers running, so when we do `ctr containers list` why is it that we don't see anything?  
+
+This is because Kubernetes using namespacing.  The find out if we have any containers outside of kworker1's namespace we do `ctr namespaces list`
+
+We must use the namespace to see the containers and we can do this with the name space flag followed by any command:
+ctr --namespace k8s.io containers list
 
 # Vagrant
 Version 2.3.3 or use Brew to install the latest for mac https://formulae.brew.sh/cask/vagrant
