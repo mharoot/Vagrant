@@ -54,11 +54,11 @@ systemctl reload sshd
 echo "[TASK 9] Set root password"
 echo -e "kubeadmin\nkubeadmin" | passwd root >/dev/null 2>&1
 
-
-echo "[TASK 10] Update /etc/hosts file"
- cat >>/etc/hosts<<EOF
- 172.16.16.100   loadbalancer.example.com     loadbalancer
- 172.16.16.101   kmaster1.example.com    kmaster1
- 172.16.16.102   kmaster2.example.com    kmaster2
- 172.16.16.201   kworker2.example.com    kworker1
-EOF
+# don't think this is mandatory, worked for our kaster3 without this
+# echo "[TASK 10] Update /etc/hosts file"
+#  cat >>/etc/hosts<<EOF
+#  172.16.16.100   loadbalancer.example.com     loadbalancer
+#  172.16.16.101   kmaster1.example.com    kmaster1
+#  172.16.16.102   kmaster2.example.com    kmaster2
+#  172.16.16.201   kworker2.example.com    kworker1
+# EOF

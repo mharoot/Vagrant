@@ -1,4 +1,4 @@
-## On any one of the Kubernetes master node (Eg: kmaster1) - i get stuck here. why? should bootsraping all 4 nodes fix this? why does he not boostrap the load blanacer the same way?
+## On any one of the Kubernetes master node (Eg: kmaster1)
 ##### Initialize Kubernetes Cluster
 ```
 kubeadm init --control-plane-endpoint="172.16.16.100:6443" --upload-certs --apiserver-advertise-address=172.16.16.101 --pod-network-cidr=192.168.0.0/16
