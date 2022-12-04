@@ -1,0 +1,1 @@
+This one will correct the problem we had in 03, where tt has a single point of failure.  As you can set in this photo we set up two load balancers.

@@ -1,0 +1,79 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+# Vagrant parallelizes the startup of virtual machines by default, and also does this for containers. 
+# Containers start so fast that the app container may not be ready for HA or NGINX when it's started. 
+# To ensure sequential startup, use the VAGRANT_NO_PARALLEL environment variable:
+ENV['VAGRANT_NO_PARALLEL'] = 'yes'
+
+VAGRANT_BOX         = "hashicorp/bionic64"
+VAGRANT_BOX_VERSION = "1.0.282"
+
+CPUS_LOAD_BALANCER = 1
+CPUS_MASTER_NODE   = 2
+CPUS_WORKER_NODE   = 1
+
+MEMORY_LOAD_BALANCER = 1024
+MEMORY_MASTER_NODE  = 2048
+MEMORY_WORKER_NODE  = 1024
+
+MASTER_NODES_COUNT = 3
+WORKER_NODES_COUNT  = 1
+
+
+Vagrant.configure(2) do |config|
+
+  # Run the 10 steps we did with our ubuntu-18.04-kubernetes-3-node-cluster, except now we have 4 node cluster where one is a load balancer
+  # config.vm.provision "shell", path: "bootstrap.sh"
+
+  # Load Balancer Node starting from: "172.16.16.100"
+  config.vm.define "loadbalancer" do |lb|
+    lb.vm.box = VAGRANT_BOX
+    lb.vm.box_version = VAGRANT_BOX_VERSION
+    lb.vm.hostname = "loadbalancer.example.com"
+    lb.vm.network "private_network", ip: "172.16.16.100"
+    lb.vm.provision "shell", path: "bootstrap_loadbalancer.sh"
+    lb.vm.provider "virtualbox" do |v|
+      v.name = "loadbalancer"
+      v.memory = MEMORY_LOAD_BALANCER
+      v.cpus = CPUS_LOAD_BALANCER
+    end
+  end
+
+  MasterCount = MASTER_NODES_COUNT
+
+  # Kubernetes Master Nodes starting from: "172.16.16.10#{i}"
+  (1..MasterCount).each do |i|
+    config.vm.define "kmaster#{i}" do |masternode|
+      masternode.vm.box = VAGRANT_BOX
+      masternode.vm.box_version = VAGRANT_BOX_VERSION
+      masternode.vm.hostname = "kmaster#{i}.example.com"
+      masternode.vm.network "private_network", ip: "172.16.16.10#{i}"
+      masternode.vm.provision "shell", path: "bootstrap.sh"
+      masternode.vm.provider "virtualbox" do |v|
+        v.name = "kmaster#{i}"
+        v.memory = MEMORY_MASTER_NODE
+        v.cpus = CPUS_MASTER_NODE
+      end
+    end
+  end
+
+  NodeCount = WORKER_NODES_COUNT
+
+  # Kubernetes Worker Nodes starting from: "172.16.16.20#{i}"
+  (1..NodeCount).each do |i|
+    config.vm.define "kworker#{i}" do |workernode|
+      workernode.vm.box = VAGRANT_BOX
+      workernode.vm.box_version = VAGRANT_BOX_VERSION
+      workernode.vm.hostname = "kworker#{i}.example.com"
+      workernode.vm.network "private_network", ip: "172.16.16.20#{i}"
+      workernode.vm.provision "shell", path: "bootstrap.sh"
+      workernode.vm.provider "virtualbox" do |v|
+        v.name = "kworker#{i}"
+        v.memory = MEMORY_WORKER_NODE
+        v.cpus = CPUS_WORKER_NODE
+      end
+    end
+  end
+
+end

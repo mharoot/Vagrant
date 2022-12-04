@@ -1,0 +1,1 @@
+It has a single point of failure as you can see in the photo
